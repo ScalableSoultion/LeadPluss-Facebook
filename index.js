@@ -31,8 +31,9 @@ const firedb = admin.firestore();
 // })
 // .catch(error => console.log(error));
 
-const clientId = process.env.FB_CLIENT_ID || "370258737579452";
-const secret = process.env.FB_CLIENT_SECRET || "33d05b117067e32174e41468ebcf31ac";
+const clientId = process.env.FB_CLIENT_ID || "986511038508130";
+const secret = process.env.FB_CLIENT_SECRET || "a41d6f91f5f24f5e0e33ada9ceff6510";
+
 const webhookVerifyToken = process.env.FB_VERIFY_TOKEN || "123@abc";
 
 app.use(cors({ origin: true }));
@@ -139,6 +140,7 @@ app.get('/addPages', (req, res) => {
 	let user_access_token = req.query['user_access_token'];
 	let leadplus_clientid = req.query['leadplus_clientid'];
 
+	// For exchanging the tokens.
 	let options = { 
 		method: 'GET',
 		url: `https://graph.facebook.com/oauth/access_token?grant_type=fb_exchange_token&client_id=${clientId}&client_secret=${secret}&fb_exchange_token=${user_access_token}`,
